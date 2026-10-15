@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nandi Youth Festival 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* All styles are scoped under .nyf so this block can be embedded on an existing page */
+    .nyf {
+      --nyf-purple: #2d1b69;
+      --nyf-purple-light: #4b2fa0;
+      --nyf-yellow: #f6c21c;
+      --nyf-yellow-dark: #e0a800;
+      --nyf-text: #1f1b2e;
+      --nyf-muted: #5c5870;
+      --nyf-border: #ebe8f3;
+      --nyf-tint: #f7f5fc;
+      background: #fff;
+      color: var(--nyf-text);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    .nyf *, .nyf *::before, .nyf *::after { box-sizing: border-box; }
+    .nyf h1, .nyf h2, .nyf h3, .nyf p { margin: 0; }
+    .nyf a { text-decoration: none; }
+
+    .nyf-container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .nyf-section { padding: 72px 0; }
+
+    .nyf-eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--nyf-purple-light);
+      margin-bottom: 12px;
+    }
+    .nyf-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 3px;
+      background: var(--nyf-yellow);
+      vertical-align: middle;
+      margin-right: 10px;
+      border-radius: 2px;
+    }
+    .nyf-heading {
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--nyf-purple);
+    }
+    .nyf-lead { color: var(--nyf-muted); font-size: 1.05rem; margin-top: 14px; max-width: 620px; }
+    .nyf-center { text-align: center; }
+    .nyf-center .nyf-lead { margin-left: auto; margin-right: auto; }
+
+    /* Buttons */
+    .nyf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+    }
+    .nyf-btn:hover { transform: translateY(-2px); }
+    .nyf-btn svg { width: 18px; height: 18px; }
+    .nyf-btn-primary { background: var(--nyf-yellow); color: var(--nyf-purple); }
+    .nyf-btn-primary:hover { background: var(--nyf-yellow-dark); box-shadow: 0 8px 20px rgba(246,194,28,.35); }
+    .nyf-btn-dark { background: var(--nyf-purple); color: #fff; }
+    .nyf-btn-dark:hover { background: var(--nyf-purple-light); box-shadow: 0 8px 20px rgba(45,27,105,.25); }
+    .nyf-btn-outline { border: 2px solid var(--nyf-purple); color: var(--nyf-purple); background: #fff; }
+    .nyf-btn-outline:hover { background: var(--nyf-purple); color: #fff; }
+
+    /* Hero */
+    .nyf-hero { padding-top: 56px; }
+    .nyf-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .nyf-tagline {
+      display: inline-block;
+      background: var(--nyf-tint);
+      color: var(--nyf-purple);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .nyf-hero h1 {
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--nyf-purple);
+      letter-spacing: -0.01em;
+    }
+    .nyf-hero h1 span { color: var(--nyf-yellow-dark); }
+    .nyf-edition {
+      margin-top: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--nyf-muted);
+    }
+    .nyf-motto { margin-top: 20px; font-size: 1.25rem; font-weight: 600; color: var(--nyf-text); }
+    .nyf-hero .nyf-lead { margin-top: 10px; }
+    .nyf-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      margin: 26px 0 32px;
+      padding: 18px 0;
+      border-top: 1px solid var(--nyf-border);
+      border-bottom: 1px solid var(--nyf-border);
+    }
+    .nyf-meta-item { display: flex; gap: 12px; align-items: flex-start; }
+    .nyf-meta-icon {
+      flex: none;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--nyf-purple);
+      color: var(--nyf-yellow);
+      display: grid; place-items: center;
+    }
+    .nyf-meta-icon svg { width: 20px; height: 20px; }
+    .nyf-meta-item strong { display: block; color: var(--nyf-purple); font-size: 0.95rem; }
+    .nyf-meta-item small { color: var(--nyf-muted); font-size: 0.85rem; }
+    .nyf-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .nyf-poster { position: relative; }
+    .nyf-poster::before {
+      content: "";
+      position: absolute;
+      inset: 18px -18px -18px 18px;
+      background: var(--nyf-yellow);
+      border-radius: 18px;
+      z-index: 0;
+    }
+    .nyf-poster img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(45,27,105,.18);
+    }
+
+    /* Compete / Exhibit */
+    .nyf-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 44px;
+    }
+    .nyf-card {
+      background: #fff;
+      border: 1px solid var(--nyf-border);
+      border-radius: 18px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .nyf-card:hover { box-shadow: 0 16px 40px rgba(45,27,105,.10); transform: translateY(-3px); }
+    .nyf-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .nyf-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--nyf-tint);
+      color: var(--nyf-purple);
+    }
+    .nyf-card-icon svg { width: 26px; height: 26px; }
+    .nyf-card-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--nyf-muted); }
+    .nyf-card h3 { font-size: 1.5rem; color: var(--nyf-purple); line-height: 1.2; }
+    .nyf-card > p { color: var(--nyf-muted); margin-bottom: 20px; }
+    .nyf-list { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 10px; }
+    .nyf-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; }
+    .nyf-list li::before {
+      content: "";
+      flex: none;
+      width: 18px; height: 18px;
+      margin-top: 3px;
+      border-radius: 50%;
+      background: var(--nyf-yellow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d1b69' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
+    }
+    .nyf-card .nyf-btn { margin-top: auto; align-self: flex-start; }
+    .nyf-deadline {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--nyf-muted);
+      font-size: 0.95rem;
+    }
+    .nyf-deadline strong { color: var(--nyf-purple); }
+
+    /* Attend */
+    .nyf-attend {
+      border: 1px solid var(--nyf-border);
+      border-radius: 22px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .nyf-attend::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: linear-gradient(var(--nyf-purple), var(--nyf-yellow));
+    }
+    .nyf-free {
+      display: inline-block;
+      background: var(--nyf-yellow);
+      color: var(--nyf-purple);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+    .nyf-attend .nyf-btn { margin-top: 26px; }
+    .nyf-note { margin-top: 12px; font-size: 0.85rem; color: var(--nyf-muted); }
+    .nyf-attend .nyf-list { margin-bottom: 0; }
+    .nyf-attend-photo { margin: 0; }
+    .nyf-attend-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      max-height: 460px;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 16px;
+    }
+    .nyf-attend-photo figcaption { margin-top: 8px; font-size: 0.8rem; color: var(--nyf-muted); text-align: right; }
+
+    @media (max-width: 900px) {
+      .nyf-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nyf-poster { max-width: 440px; margin: 0 auto; width: calc(100% - 18px); }
+      .nyf-cards { grid-template-columns: 1fr; }
+      .nyf-attend { grid-template-columns: 1fr; padding: 36px 28px; gap: 24px; }
+    }
+    @media (max-width: 520px) {
+      .nyf-section { padding: 52px 0; }
+      .nyf-card { padding: 24px; }
+      .nyf-hero-actions .nyf-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body style="margin:0;background:#fff;">
+
+<div class="nyf">
+
+  <!-- ============ HERO ============ -->
+  <section class="nyf-section nyf-hero">
+    <div class="nyf-container nyf-hero-grid">
+      <div>
+        <span class="nyf-tagline">Young People. Bolder Futures.</span>
+        <h1>Nandi <span>Youth</span><br>Festival 2026</h1>
+        <p class="nyf-edition">Second Edition</p>
+        <p class="nyf-motto">From Grassroot Ideas to Greatness</p>
+        <p class="nyf-lead">A two-day celebration of youth pitches, performances and exhibits in Nandi County. Come and watch Nandi's young innovators, artists and entrepreneurs.</p>
+
+        <div class="nyf-meta">
+          <div class="nyf-meta-item">
+            <span class="nyf-meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </span>
+            <div>
+              <strong>26 &amp; 27 November 2026</strong>
+              <small>Thursday &amp; Friday</small>
+            </div>
+          </div>
+          <div class="nyf-meta-item">
+            <span class="nyf-meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <div>
+              <strong>Koitalel Samoei University</strong>
+              <small>Mosoriot Campus, Nandi County</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="nyf-hero-actions">
+          <a class="nyf-btn nyf-btn-dark" href="https://nandiyouthfestival.co.ke/" target="_blank" rel="noopener">
+            Learn More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="nyf-btn nyf-btn-outline" href="#nyf-take-part">Take Part</a>
+        </div>
+      </div>
+
+      <div class="nyf-poster">
+        <img src="poster.jpeg" alt="Nandi Youth Festival 2026 poster – 26th &amp; 27th November 2026 at Koitalel Samoei University, Mosoriot Campus">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPETE / EXHIBIT ============ -->
+  <section class="nyf-section" id="nyf-take-part">
+    <div class="nyf-container">
+      <div class="nyf-center">
+        <span class="nyf-eyebrow">Take Part</span>
+        <h2 class="nyf-heading">Compete or Exhibit</h2>
+        <p class="nyf-lead">Open to young residents of Nandi County. Choose one way to take part. We'll email you at every step.</p>
+      </div>
+
+      <div class="nyf-cards">
+        <article class="nyf-card">
+          <div class="nyf-card-top">
+            <span class="nyf-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
+            </span>
+            <div>
+              <div class="nyf-card-label">Judged</div>
+              <h3>Compete</h3>
+            </div>
+          </div>
+          <p>Pitch or perform in one sub-category and be scored by judges. The top three in each sub-category are awarded.</p>
+          <ul class="nyf-list">
+            <li>Ages 18 to 35 (Folk / Traditional Dance open to all ages)</li>
+            <li>Innovation &amp; Enterprise, Performing Arts and Modeling</li>
+            <li>National ID required</li>
+          </ul>
+          <a class="nyf-btn nyf-btn-primary" href="https://nandiyouthfestival.co.ke/apply/competition" target="_blank" rel="noopener">
+            Apply to Compete
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="nyf-card">
+          <div class="nyf-card-top">
+            <span class="nyf-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v8h14v-8M10 20v-5h4v5"/></svg>
+            </span>
+            <div>
+              <div class="nyf-card-label">Showcase</div>
+              <h3>Exhibit</h3>
+            </div>
+          </div>
+          <p>Display a product, innovation or work. A curated showcase, not judged, with limited spaces.</p>
+          <ul class="nyf-list">
+            <li>Ages 18 to 35, National ID required</li>
+            <li>Only selected applicants exhibit</li>
+            <li>Exhibitors cannot also compete</li>
+          </ul>
+          <a class="nyf-btn nyf-btn-primary" href="https://nandiyouthfestival.co.ke/apply/exhibitor" target="_blank" rel="noopener">
+            Apply to Exhibit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+
+      <p class="nyf-deadline">Applications close <strong>2 November 2026, 11:59 PM</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ ATTEND ============ -->
+  <section class="nyf-section" style="padding-top:0;">
+    <div class="nyf-container">
+      <div class="nyf-attend">
+        <div>
+          <span class="nyf-free">Free Entry</span>
+          <h2 class="nyf-heading">Come and Attend</h2>
+          <p class="nyf-lead">Attendance is free and open to everyone. No registration is needed &mdash; just show up on 26 &amp; 27 November.</p>
+          <ul class="nyf-list" style="margin-top:22px;">
+            <li>Watch live pitches, performances and exhibits</li>
+            <li>Learn, network and meet mentors</li>
+            <li>Bring your friends and family</li>
+          </ul>
+          <a class="nyf-btn nyf-btn-dark" href="https://nandiyouthfestival.co.ke/register" target="_blank" rel="noopener">
+            Register as a Participant
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <p class="nyf-note">Registering is optional and simply helps us plan.</p>
+        </div>
+        <figure class="nyf-attend-photo">
+          <img src="nyf-2025-festival-photo-frame.jpg" alt="A young festival-goer smiling behind the Nandi County Youth Festival photo frame in 2025" loading="lazy">
+          <figcaption>Nandi Youth Festival 2025</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
